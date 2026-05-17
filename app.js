@@ -1,7 +1,7 @@
 const siteData = {
   name: "Yuanweimin",
   title: "Researcher | Computer Science | AI & Data Science",
-  photo: "assets/ywm.jpeg?v=5d4b309",
+  photo: "assets/ywm.jpeg?v=hires-2644",
   bio:
     "I study intelligent systems, data-driven methods, and human-centered computing. This homepage collects my research interests, publications, projects, and contact information.",
   about:
