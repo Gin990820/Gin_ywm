@@ -40,7 +40,30 @@
 
           <aside class="profile-frame" aria-label="Profile photo and quick information">
             <div class="photo-wrap">
-              <img data-profile="photo" src="assets/profile-placeholder.svg" alt="Profile photo placeholder">
+              <svg class="profile-card-svg" viewBox="0 0 640 800" role="img" aria-labelledby="profile-card-title profile-card-desc">
+                <title id="profile-card-title">Yuanweimin academic profile card</title>
+                <desc id="profile-card-desc">A clean academic profile card with a portrait photo and the initials YW.</desc>
+                <defs>
+                  <linearGradient id="profile-bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f7ebcc"/>
+                    <stop offset="0.52" stop-color="#dff3f0"/>
+                    <stop offset="1" stop-color="#e4e8fb"/>
+                  </linearGradient>
+                  <linearGradient id="profile-panel" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffffff"/>
+                    <stop offset="1" stop-color="#eef4f7"/>
+                  </linearGradient>
+                  <clipPath id="profile-photo-clip">
+                    <rect x="96" y="106" width="448" height="548" rx="18"/>
+                  </clipPath>
+                </defs>
+                <rect width="640" height="800" fill="url(#profile-bg)"/>
+                <path d="M0 105 640 0v150L0 255Z" fill="#ffffff" opacity=".42"/>
+                <path d="M0 640 640 492v160L0 800Z" fill="#ffffff" opacity=".26"/>
+                <rect x="96" y="106" width="448" height="548" rx="18" fill="url(#profile-panel)" opacity=".9"/>
+                <image data-profile="photo" href="assets/ywm.jpeg" x="96" y="106" width="448" height="548" preserveAspectRatio="xMidYMid slice" clip-path="url(#profile-photo-clip)"/>
+                <rect x="96" y="106" width="448" height="548" rx="18" fill="none" stroke="#ffffff" stroke-opacity=".72" stroke-width="8"/>
+              </svg>
             </div>
             <div class="quick-info" id="quick-info"></div>
           </aside>

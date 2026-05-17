@@ -1,7 +1,7 @@
 const siteData = {
   name: "Yuanweimin",
   title: "Researcher | Computer Science | AI & Data Science",
-  photo: "assets/profile-placeholder.svg",
+  photo: "assets/ywm.jpeg",
   bio:
     "I study intelligent systems, data-driven methods, and human-centered computing. This homepage collects my research interests, publications, projects, and contact information.",
   about:
@@ -118,6 +118,11 @@ function setProfileFields() {
     if (element.tagName === "IMG") {
       element.src = siteData[key];
       element.alt = `${siteData.name} profile photo`;
+      return;
+    }
+
+    if (element.tagName.toLowerCase() === "image") {
+      element.setAttribute("href", siteData[key]);
       return;
     }
 
