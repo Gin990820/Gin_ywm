@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal academic homepage for Yuanweimin.">
+    <title>Yuanweimin | Academic Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">Y</span>
+        <span class="brand-text">Academic Home</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#papers">Papers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-grid shell">
+          <div class="hero-copy">
+            <p class="eyebrow">🎓 Personal Academic Homepage</p>
+            <h1 id="hero-title" data-profile="name">Yuanweimin</h1>
+            <p class="title-line" data-profile="title">Researcher | Computer Science | AI & Data Science</p>
+            <p class="hero-summary" data-profile="bio">
+              I study intelligent systems, data-driven methods, and human-centered computing.
+              This homepage collects my research interests, publications, projects, and contact information.
+            </p>
+            <div class="hero-actions" aria-label="Profile links" id="hero-actions"></div>
+          </div>
+
+          <aside class="profile-frame" aria-label="Profile photo and quick information">
+            <div class="photo-wrap">
+              <img data-profile="photo" src="assets/profile-placeholder.svg" alt="Profile photo placeholder">
+            </div>
+            <div class="quick-info" id="quick-info"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="intro-band" id="about" aria-labelledby="about-title">
+        <div class="shell split-section">
+          <div>
+            <p class="section-kicker">✨ About</p>
+            <h2 id="about-title">Profile</h2>
+            <p class="section-lead" data-profile="about">
+              I am interested in building reliable, useful, and interpretable computational systems.
+              My work sits around machine learning, data analysis, and applications that connect research with practice.
+            </p>
+          </div>
+          <div class="fact-grid" id="fact-grid" aria-label="Basic information"></div>
+        </div>
+      </section>
+
+      <section class="research-section" id="research" aria-labelledby="research-title">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="section-kicker">🔬 Research</p>
+            <h2 id="research-title">Research Interests</h2>
+            <p class="section-lead">
+              My research centers on intelligent computational methods, careful data analysis, and systems that are useful in real scholarly workflows.
+            </p>
+          </div>
+          <div class="interest-grid" id="interest-grid"></div>
+        </div>
+      </section>
+
+      <section class="papers-section" id="papers" aria-labelledby="papers-title">
+        <div class="shell">
+          <div class="section-heading papers-heading">
+            <div>
+              <p class="section-kicker">📚 Publications</p>
+              <h2 id="papers-title">Selected Papers</h2>
+            </div>
+            <a class="text-link" href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a>
+          </div>
+          <div class="paper-list" id="paper-list"></div>
+        </div>
+      </section>
+
+      <section class="timeline-section" aria-labelledby="timeline-title">
+        <div class="shell split-section">
+          <div>
+            <p class="section-kicker">🧭 Journey</p>
+            <h2 id="timeline-title">Education & Experience</h2>
+            <p class="section-lead">
+              A brief overview of academic training, research experience, teaching, service, and selected activities.
+            </p>
+          </div>
+          <div class="timeline-list" id="timeline-list"></div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-grid">
+          <div>
+            <p class="section-kicker">✉️ Contact</p>
+            <h2 id="contact-title">Let us connect</h2>
+            <p class="section-lead">
+              I welcome research conversations, collaboration ideas, and questions about my work.
+            </p>
+          </div>
+          <div class="contact-panel" id="contact-panel"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-content">
+        <span>© <span id="year"></span> <span data-profile="name">Yuanweimin</span></span>
+        <span>Built for GitHub Pages</span>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
