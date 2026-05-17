@@ -121,11 +121,6 @@ function setProfileFields() {
       return;
     }
 
-    if (element.tagName.toLowerCase() === "image") {
-      element.setAttribute("href", siteData[key]);
-      return;
-    }
-
     element.textContent = siteData[key];
   });
 

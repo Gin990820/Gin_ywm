@@ -226,16 +226,48 @@ h3 {
 }
 
 .photo-wrap {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   aspect-ratio: 4 / 5;
-  background: var(--soft);
+  background:
+    linear-gradient(135deg, var(--gold-soft) 0%, var(--teal-soft) 52%, var(--indigo-soft) 100%);
 }
 
-.photo-wrap img,
-.photo-wrap svg {
+.photo-wrap::before,
+.photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.photo-wrap::before {
+  background:
+    linear-gradient(168deg, rgba(255, 255, 255, 0.42) 0 25%, transparent 25% 100%);
+}
+
+.photo-wrap::after {
+  background:
+    linear-gradient(168deg, transparent 0 62%, rgba(255, 255, 255, 0.26) 62% 100%);
+}
+
+.profile-photo {
+  position: absolute;
+  z-index: 1;
+  top: 13.25%;
+  left: 15%;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 68.5%;
   object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow:
+    0 0 0 8px rgba(255, 255, 255, 0.72),
+    0 20px 45px rgba(23, 32, 51, 0.16);
 }
 
 .quick-info {
