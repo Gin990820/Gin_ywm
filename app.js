@@ -1,27 +1,30 @@
 const siteData = {
-  name: "Yuanweimin",
-  title: "Researcher | Computer Science | AI & Data Science",
+  name: "Weimin Yuan",
+  title: "Ph.D. Student | Computer Science | AI & Game Theory",
   photo: "assets/ywm.jpeg?v=hires-2644",
   bio:
-    "I study intelligent systems, data-driven methods, and human-centered computing. This homepage collects my research interests, publications, projects, and contact information.",
+    "Hi 👋, My name is Weimin Yuan (Chinese name: 袁伟民). I’m currently learning AI-related technologies and Game Theory. This homepage collects my research interests, publications, projects, and contact information.",
   about:
-    "I am interested in building reliable, useful, and interpretable computational systems. My work sits around machine learning, data analysis, and applications that connect research with practice.",
+    "A person who remains curious about both technology and the world. Passionate about basketball 🏀, poker 🃏, and independent thinking, and enjoys finding clear answers within complex problems. Believes in long-termism and that real growth comes from consistent accumulation over time. Still learning, exploring, and trying to create things that are truly valuable.",
   actions: [
-    { label: "Email", icon: "✉️", href: "mailto:yuanweimin@university.edu", primary: true },
+    { label: "Email", icon: "✉️", href: "mailto:gin990820@gmail.com", primary: true },
     { label: "CV", icon: "📄", href: "#" },
     { label: "GitHub", icon: "💻", href: "https://github.com/Gin990820" },
-    { label: "Scholar", icon: "🎓", href: "https://scholar.google.com/" }
+    { label: "Scholar", icon: "🎓", href: "https://scholar.google.com/citations?user=KAtP2HUAAAAJ&hl=zh-CN" }
   ],
   quickInfo: [
-    { label: "Affiliation", value: "University / Research Lab", icon: "🏛️" },
+    { label: "Affiliation", value: "University of Houston", icon: "🏛️" },
     { label: "Location", value: "United States", icon: "📍" },
-    { label: "Focus", value: "AI, Data Science, HCI", icon: "🧠" }
+    { label: "Focus", value: "AI, Game Theory, ML", icon: "🧠" }
   ],
-  facts: [
-    { label: "Name", value: "Yuanweimin", emoji: "👋" },
-    { label: "Title", value: "Graduate Student / Researcher", emoji: "🎓" },
-    { label: "Department", value: "Computer Science", emoji: "🏫" },
-    { label: "Keywords", value: "Machine Learning, Data, Systems", emoji: "🔎" }
+  profilePhotos: [
+    "assets/pic/E38D4845-F08C-4668-BE03-8A629129A55A_1_105_c.jpeg",
+    "assets/pic/B2303B8D-CBF5-49EE-B157-B3EDCBC1FD6C_1_102_o.jpeg",
+    "assets/pic/22A7BD5E-6B17-44A0-BBAF-D6CE10E3C32A_1_105_c.jpeg",
+    "assets/pic/2701302B-E757-47F3-893E-A7229D0176E8_1_105_c.jpeg",
+    "assets/pic/CA58FB71-EDB9-4784-8602-48DC7783CC78_1_105_c.jpeg",
+    "assets/pic/20F9FA7A-8F85-452D-85F0-E90135863D72_1_105_c.jpeg",
+    "assets/pic/9C6DF1B5-F411-4339-92B6-CED09A5370AB_1_105_c.jpeg"
   ],
   interests: [
     {
@@ -61,7 +64,7 @@ const siteData = {
     {
       year: "2025",
       title: "Interpretable Models for Human-Centered Computational Systems",
-      authors: "Yuanweimin, Collaborator C",
+      authors: "Weimin Yuan, Collaborator C",
       venue: "Workshop / Preprint",
       description:
         "This study explores transparent model behavior and better interaction patterns for AI-assisted systems.",
@@ -74,7 +77,7 @@ const siteData = {
     {
       year: "2024",
       title: "Scalable Analysis Methods for Complex Research Data",
-      authors: "Yuanweimin et al.",
+      authors: "Weimin Yuan et al.",
       venue: "Manuscript in Preparation",
       description:
         "This project develops scalable analysis workflows for complex datasets and research-oriented visual evidence.",
@@ -164,18 +167,63 @@ function renderQuickInfo() {
   });
 }
 
-function renderFacts() {
-  const grid = $("#fact-grid");
-  siteData.facts.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "fact-card";
-    card.innerHTML = `
-      <span class="fact-emoji" aria-hidden="true">${item.emoji}</span>
-      <div class="fact-label">${item.label}</div>
-      <div class="fact-value">${item.value}</div>
-    `;
-    grid.append(card);
+function renderPhotoCarousel() {
+  const carousel = $("#photo-carousel");
+  if (!carousel || siteData.profilePhotos.length === 0) return;
+
+  const frame = document.createElement("div");
+  frame.className = "carousel-frame";
+
+  const track = document.createElement("div");
+  track.className = "carousel-track";
+
+  const dots = document.createElement("div");
+  dots.className = "carousel-dots";
+
+  let activeIndex = 0;
+  let timerId;
+
+  function setActiveSlide(index) {
+    activeIndex = index;
+    track.style.transform = `translateX(-${activeIndex * 100}%)`;
+    $$(".carousel-dot", dots).forEach((dot, dotIndex) => {
+      dot.classList.toggle("active", dotIndex === activeIndex);
+    });
+  }
+
+  function startAutoPlay() {
+    window.clearInterval(timerId);
+    timerId = window.setInterval(() => {
+      setActiveSlide((activeIndex + 1) % siteData.profilePhotos.length);
+    }, 3200);
+  }
+
+  siteData.profilePhotos.forEach((src, index) => {
+    const slide = document.createElement("figure");
+    slide.className = "carousel-slide";
+    slide.innerHTML = `<img src="${src}" alt="Personal photo ${index + 1}" loading="${index === 0 ? "eager" : "lazy"}">`;
+    track.append(slide);
+
+    const dot = document.createElement("button");
+    dot.className = "carousel-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Show photo ${index + 1}`);
+    dot.addEventListener("click", () => {
+      setActiveSlide(index);
+      startAutoPlay();
+    });
+    dots.append(dot);
   });
+
+  frame.append(track);
+  carousel.append(frame, dots);
+  carousel.addEventListener("mouseenter", () => window.clearInterval(timerId));
+  carousel.addEventListener("mouseleave", startAutoPlay);
+
+  setActiveSlide(0);
+  if (siteData.profilePhotos.length > 1) {
+    startAutoPlay();
+  }
 }
 
 function renderInterests() {
@@ -252,7 +300,7 @@ function init() {
   setProfileFields();
   renderActions();
   renderQuickInfo();
-  renderFacts();
+  renderPhotoCarousel();
   renderInterests();
   renderPapers();
   renderTimeline();

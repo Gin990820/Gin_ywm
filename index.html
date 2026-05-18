@@ -13,8 +13,10 @@
   <body>
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Back to top">
-        <span class="brand-mark">Y</span>
-        <span class="brand-text">Academic Home</span>
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/icon.jpg" alt="">
+        </span>
+        <span class="brand-text">Weimin Yuan | Personal Website</span>
       </a>
       <nav class="nav-links">
         <a href="#about">About</a>
@@ -28,19 +30,23 @@
       <section class="hero-section" aria-labelledby="hero-title">
         <div class="hero-grid shell">
           <div class="hero-copy">
-            <p class="eyebrow">🎓 Personal Academic Homepage</p>
-            <h1 id="hero-title" data-profile="name">Yuanweimin</h1>
-            <p class="title-line" data-profile="title">Researcher | Computer Science | AI & Data Science</p>
+            <p class="eyebrow">🎓 Personal Homepage</p>
+            <h1 id="hero-title" data-profile="name">Weimin Yuan</h1>
+            <p class="title-line" data-profile="title">Ph.D. Student | Computer Science | AI & Game Theory</p>
             <p class="hero-summary" data-profile="bio">
-              I study intelligent systems, data-driven methods, and human-centered computing.
+              Hi 👋, My name is Weimin Yuan (Chinese name: 袁伟民). I’m currently learning AI-related technologies and Game Theory.
               This homepage collects my research interests, publications, projects, and contact information.
             </p>
             <div class="hero-actions" aria-label="Profile links" id="hero-actions"></div>
+            <blockquote class="hero-quote">
+              <span>While the northern sea still lay frozen, the plum blossoms bloomed in defiance.</span>
+              <span>在坚冰还盖着北海的时候，我看到了怒放的梅花</span>
+            </blockquote>
           </div>
 
           <aside class="profile-frame" aria-label="Profile photo and quick information">
             <div class="photo-wrap">
-              <img class="profile-photo" data-profile="photo" src="assets/ywm.jpeg?v=hires-2644" alt="Yuanweimin profile photo">
+              <img class="profile-photo" data-profile="photo" src="assets/ywm.jpeg?v=hires-2644" alt="Weimin Yuan profile photo">
             </div>
             <div class="quick-info" id="quick-info"></div>
           </aside>
@@ -53,11 +59,13 @@
             <p class="section-kicker">✨ About</p>
             <h2 id="about-title">Profile</h2>
             <p class="section-lead" data-profile="about">
-              I am interested in building reliable, useful, and interpretable computational systems.
-              My work sits around machine learning, data analysis, and applications that connect research with practice.
+              A person who remains curious about both technology and the world.
+              Passionate about basketball 🏀, poker 🃏, and independent thinking, and enjoys finding clear answers within complex problems.
+              Believes in long-termism and that real growth comes from consistent accumulation over time.
+              Still learning, exploring, and trying to create things that are truly valuable.
             </p>
           </div>
-          <div class="fact-grid" id="fact-grid" aria-label="Basic information"></div>
+          <div class="photo-carousel" id="photo-carousel" aria-label="Personal photo carousel"></div>
         </div>
       </section>
 

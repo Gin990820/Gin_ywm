@@ -85,11 +85,20 @@ img {
   display: grid;
   width: 34px;
   height: 34px;
+  box-sizing: border-box;
+  padding: 4px;
   place-items: center;
   border-radius: 8px;
-  color: var(--white);
-  background: var(--ink);
+  overflow: hidden;
+  background: #050505;
   box-shadow: 0 8px 24px rgba(23, 32, 51, 0.18);
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-text {
@@ -191,6 +200,18 @@ h3 {
   margin-top: 30px;
 }
 
+.hero-quote {
+  display: grid;
+  gap: 4px;
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #a6acb8;
+  font-family: "Noto Serif SC", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
 .button-link {
   display: inline-flex;
   align-items: center;
@@ -277,7 +298,6 @@ h3 {
 }
 
 .info-row,
-.fact-card,
 .interest-card,
 .paper-card,
 .timeline-item,
@@ -305,7 +325,6 @@ h3 {
 }
 
 .info-label,
-.fact-label,
 .paper-meta,
 .timeline-date {
   color: var(--muted);
@@ -313,8 +332,7 @@ h3 {
   line-height: 1.4;
 }
 
-.info-value,
-.fact-value {
+.info-value {
   margin-top: 3px;
   font-weight: 750;
   line-height: 1.4;
@@ -346,26 +364,62 @@ h3 {
   font-size: 1.02rem;
 }
 
-.fact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.fact-card {
-  min-height: 128px;
-  padding: 18px;
-}
-
-.fact-emoji {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  margin-bottom: 14px;
+.photo-carousel {
+  overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--gold-soft);
-  font-size: 1.25rem;
+  background: var(--white);
+  box-shadow: 0 18px 44px rgba(23, 32, 51, 0.08);
+}
+
+.carousel-frame {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--soft);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 680ms cubic-bezier(0.22, 0.8, 0.24, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 12px 16px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #c5ccd7;
+  cursor: pointer;
+  transition: width 220ms ease, background 220ms ease, opacity 220ms ease;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  background: var(--teal);
 }
 
 .section-heading {
@@ -628,7 +682,6 @@ h3 {
     font-size: 1.06rem;
   }
 
-  .fact-grid,
   .paper-card {
     grid-template-columns: 1fr;
   }
