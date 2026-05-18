@@ -28,7 +28,7 @@ const siteData = {
   ],
   interests: [
     {
-      title: "Machine Learning",
+      title: "Artificial Intelligence",
       icon: "🤖",
       description:
         "Learning algorithms, robust evaluation, and model behavior in real-world data settings."
@@ -40,10 +40,56 @@ const siteData = {
         "Data analysis workflows, visualization, and practical methods for extracting meaningful evidence."
     },
     {
-      title: "Human-Centered AI",
+      title: "Game Theory",
       icon: "🧩",
       description:
-        "Interfaces, explanations, and evaluation methods that make intelligent systems more useful to people."
+        "Mathematical models of strategic decision-making that help analyze interactions, incentives, and learning dynamics in intelligent systems."
+    }
+  ],
+  projects: [
+    {
+      type: "Competition",
+      title: "SMP Challenge @ ACM Multimedia",
+      period: "ACM MM / CCF-A",
+      description:
+        "Participated in the SMP competition track associated with ACM Multimedia, focusing on data-driven modeling, evaluation, and practical machine learning workflows.",
+      tags: ["ACM MM", "SMP", "Multimedia", "Competition"],
+      image: "",
+      imageAlt: "SMP competition result or certificate",
+      mediaLabel: "Result / Certificate"
+    },
+    {
+      type: "Competition",
+      title: "Kaggle Competition Silver Medal",
+      period: "Kaggle",
+      description:
+        "Built competitive data science pipelines with careful validation, feature engineering, model tuning, and ensemble strategies, earning a Kaggle silver medal.",
+      tags: ["Kaggle", "Silver Medal", "Data Science", "Ensemble"],
+      image: "",
+      imageAlt: "Kaggle silver medal result",
+      mediaLabel: "Medal / Leaderboard"
+    },
+    {
+      type: "Project",
+      title: "AI Application Prototypes",
+      period: "Personal Projects",
+      description:
+        "Explored AI-related technologies through small prototypes, including model evaluation, generative AI applications, and tools for turning complex information into usable outputs.",
+      tags: ["AI", "LLM", "Prototype", "Evaluation"],
+      image: "",
+      imageAlt: "AI application prototype preview",
+      mediaLabel: "Project Preview"
+    },
+    {
+      type: "Project",
+      title: "Strategic Decision Modeling",
+      period: "Game Theory",
+      description:
+        "Studied and implemented examples of strategic interaction, incentives, and learning dynamics to connect mathematical reasoning with intelligent systems.",
+      tags: ["Game Theory", "Strategy", "Learning Dynamics", "Modeling"],
+      image: "",
+      imageAlt: "Strategic decision modeling result",
+      mediaLabel: "Result Image"
     }
   ],
   papers: [
@@ -59,7 +105,10 @@ const siteData = {
         { label: "PDF", href: "#" },
         { label: "Code", href: "#" },
         { label: "BibTeX", href: "#" }
-      ]
+      ],
+      image: "",
+      imageAlt: "Paper figure preview",
+      mediaLabel: "Paper Figure"
     },
     {
       year: "2025",
@@ -72,7 +121,10 @@ const siteData = {
       links: [
         { label: "PDF", href: "#" },
         { label: "Slides", href: "#" }
-      ]
+      ],
+      image: "",
+      imageAlt: "Paper figure preview",
+      mediaLabel: "Paper Figure"
     },
     {
       year: "2024",
@@ -82,7 +134,10 @@ const siteData = {
       description:
         "This project develops scalable analysis workflows for complex datasets and research-oriented visual evidence.",
       tags: ["Analysis", "Visualization", "Systems"],
-      links: [{ label: "Project", href: "#" }]
+      links: [{ label: "Project", href: "#" }],
+      image: "",
+      imageAlt: "Project or paper preview",
+      mediaLabel: "Preview"
     }
   ],
   timeline: [
@@ -130,7 +185,7 @@ function setProfileFields() {
   document.title = `${siteData.name} | Academic Homepage`;
   const description = $('meta[name="description"]');
   if (description) {
-    description.content = `${siteData.name}'s personal academic homepage, research interests, papers, and contact information.`;
+    description.content = `${siteData.name}'s personal academic homepage, research interests, projects, papers, and contact information.`;
   }
 }
 
@@ -240,6 +295,45 @@ function renderInterests() {
   });
 }
 
+function createMediaSlot(item, className, fallbackLabel) {
+  if (item.image) {
+    return `
+      <figure class="${className}">
+        <img src="${item.image}" alt="${item.imageAlt || fallbackLabel}">
+      </figure>
+    `;
+  }
+
+  return `
+    <figure class="${className} media-placeholder">
+      <span>${item.mediaLabel || fallbackLabel}</span>
+    </figure>
+  `;
+}
+
+function renderProjects() {
+  const grid = $("#project-grid");
+  siteData.projects.forEach((project) => {
+    const card = document.createElement("article");
+    card.className = "project-card";
+    const tags = project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+    const media = createMediaSlot(project, "project-media", "Result / Certificate");
+    card.innerHTML = `
+      <div class="project-main">
+        <div class="project-topline">
+          <span class="project-type">${project.type}</span>
+          <span class="project-meta">${project.period}</span>
+        </div>
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="tag-row">${tags}</div>
+      </div>
+      ${media}
+    `;
+    grid.append(card);
+  });
+}
+
 function renderPapers() {
   const list = $("#paper-list");
   siteData.papers.forEach((paper) => {
@@ -249,15 +343,17 @@ function renderPapers() {
     const links = paper.links
       .map((link) => `<a class="paper-link" href="${link.href}">${link.label}</a>`)
       .join("");
+    const media = createMediaSlot(paper, "paper-media", "Paper Image");
     card.innerHTML = `
       <div class="paper-year">${paper.year}</div>
-      <div>
+      <div class="paper-main">
         <h3>${paper.title}</h3>
         <div class="paper-meta">${paper.authors} · ${paper.venue}</div>
         <p>${paper.description}</p>
         <div class="tag-row">${tags}</div>
         <div class="paper-links">${links}</div>
       </div>
+      ${media}
     `;
     list.append(card);
   });
@@ -302,6 +398,7 @@ function init() {
   renderQuickInfo();
   renderPhotoCarousel();
   renderInterests();
+  renderProjects();
   renderPapers();
   renderTimeline();
   renderContact();
